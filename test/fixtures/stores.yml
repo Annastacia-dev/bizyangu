@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: stores
+#
+#  id         :uuid             not null, primary key
+#  contact    :string
+#  location   :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  location: MyString
+  contact: MyString
+
+two:
+  name: MyString
+  location: MyString
+  contact: MyString
