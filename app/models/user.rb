@@ -61,4 +61,7 @@ class User < ApplicationRecord
     admin: 2
   }
 
+  # private methods
+  private
+
 end

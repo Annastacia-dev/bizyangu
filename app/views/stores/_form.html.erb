@@ -1,4 +1,4 @@
-<%= form_with(model: store, class: "flex flex-col gap-10 col-span-1") do |f| %>
+<%= form_with(model: store, class: "flex flex-col gap-10") do |f| %>
   <%= render 'shared/errors', object: store %>
 
   <div class="grid lg:grid-cols-2 gap-x-10 gap-y-5 ">
@@ -24,39 +24,41 @@
       <%= f.file_field :logo, class: "border border-gray-600 outline-none file:px-2 file:py-2 bg-transparent file:bg-transparent file:border-0 file:border-r file:cursor-pointer file:mr-4 file:hover:bg-gray-100 text-sm rounded", accept: 'image/*' %>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <%= f.label :your_name, class: 'capitalize text-sm font-medium' do %>
-        <span> your name </span>
-        <span class="text-red-500">*</span>
-      <% end %>
-      <%= f.text_field :owner_name, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
-    </div>
+    <%= f.fields_for :users do |user_form| %>
+      <div class="flex flex-col gap-2">
+        <%= user_form.label :name, class: 'capitalize text-sm font-medium' do %>
+          <span> your name </span>
+          <span class="text-red-500">*</span>
+        <% end %>
+        <%= user_form.text_field :name, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+      </div>
 
-    <div class="flex flex-col gap-2">
-      <%= f.label :email, class: 'capitalize text-sm font-medium' do %>
-        <span> email </span>
-        <span class="text-red-500">*</span>
-      <% end %>
-      <%= f.text_field :email, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
-    </div>
+      <div class="flex flex-col gap-2">
+        <%= user_form.label :email, class: 'capitalize text-sm font-medium' do %>
+          <span> email </span>
+          <span class="text-red-500">*</span>
+        <% end %>
+        <%= user_form.text_field :email, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+      </div>
 
-    <div class="flex flex-col gap-2">
-      <%= f.label :phone, class: 'capitalize text-sm font-medium' do %>
-        <span> phone </span>
-        <span class="text-red-500">*</span>
-      <% end %>
-      <%= f.text_field :email, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
-    </div>
+      <div class="flex flex-col gap-2">
+        <%= user_form.label :phone, class: 'capitalize text-sm font-medium' do %>
+          <span> phone </span>
+          <span class="text-red-500">*</span>
+        <% end %>
+        <%= user_form.text_field :phone, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+      </div>
 
-    <div class="flex flex-col gap-2">
-      <%= f.label :password, class: 'capitalize text-sm font-medium' do %>
-        <span> password </span>
-        <span class="text-red-500">*</span>
-      <% end %>
-      <%= f.text_field :password, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
-    </div>
+      <div class="flex flex-col gap-2">
+        <%= user_form.label :password, class: 'capitalize text-sm font-medium' do %>
+          <span> password </span>
+          <span class="text-red-500">*</span>
+        <% end %>
+        <%= user_form.password_field :password, class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+      </div>
+    <% end %>
   </div>
 
-  <%= f.submit class: 'btn-primary w-1/3 hover:bg-gray-900 hover:text-secondary' %>
+  <%= f.submit class: 'btn-primary lg:w-1/3 hover:bg-gray-900 hover:text-secondary' %>
 
 <% end %>

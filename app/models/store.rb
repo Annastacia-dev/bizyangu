@@ -19,4 +19,18 @@ class Store < ApplicationRecord
 
   # validations
   validates :name, presence: true, uniqueness: true
+
+  # associations
+  has_many :users, dependent: :destroy
+  accepts_nested_attributes_for :users, allow_destroy: true
+
+  # callbacks
+  before_save :downcase_name
+
+  # private methods
+  private
+
+  def downcase_name
+    self.name = name.downcase
+  end
 end
