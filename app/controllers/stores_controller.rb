@@ -1,4 +1,4 @@
-class StoreController < ApplicationController
+class StoresController < ApplicationController
 
   def new
     @store = Store.new
@@ -19,5 +19,6 @@ class StoreController < ApplicationController
   private
 
   def store_params
-    paams.require(:store).permit(:name)
+    params.require(:store).permit(:name, :owner_name, :email, :password, :phone, :logo, :location)
+  end
 end

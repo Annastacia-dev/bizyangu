@@ -12,6 +12,7 @@
 #
 class Store < ApplicationRecord
   has_paper_trail
+  has_one_attached :logo
 
   include Sluggable
   friendly_slug_scope to_slug: :name

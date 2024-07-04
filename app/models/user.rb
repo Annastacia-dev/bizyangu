@@ -52,7 +52,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   # associations
-  belongs_to :store, if: :store_admin?
+  belongs_to :store, optional: true
 
   # enums
   enum role: {

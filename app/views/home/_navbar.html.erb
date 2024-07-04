@@ -1,11 +1,11 @@
-<nav class="flex justify-between  w-full p-5 text-primary">
-  <div class="flex items-center gap-3">
+<nav class="flex justify-between  w-full p-5 text-primary shadow-sm">
+  <%= link_to root_path, class:"flex items-center gap-3" do %>
     <%= image_tag 'icon-v2.png', alt: 'logo', class: 'w-6' %>
     <p class="capitalize font-bold"> biz yangu </p>
-  </div>
+  <% end %>
 
   <ul class="md:flex hidden items-center gap-4 capitalize font-medium text-sm">
-   <li class="hover:underline hover:font-semibold">home</li>
+   <%= link_to 'home', root_path, class: "hover:underline hover:font-semibold" %>
    <li class="hover:underline hover:font-semibold">about</li>
    <li class="hover:underline hover:font-semibold">solutions</li>
    <li class="hover:underline hover:font-semibold">pricing & plans</li>
@@ -17,7 +17,7 @@
       Log in
     </button>
 
-    <button class="bg-primary text-white capitalize px-4 py-2 rounded hover:bg-transparent  hover:text-primary border-2 border-primary font-semibold text-sm">
+    <button class="btn-primary">
       <%= link_to new_store_path do %>
         get started
       <% end %>
