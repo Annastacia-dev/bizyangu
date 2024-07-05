@@ -25,7 +25,7 @@ class Store < ApplicationRecord
   accepts_nested_attributes_for :users, allow_destroy: true
 
   # callbacks
-  before_save :downcase_name
+  before_validation :downcase_name
 
   # private methods
   private

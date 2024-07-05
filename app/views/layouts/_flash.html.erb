@@ -1,0 +1,11 @@
+<div id="flash" class="absolute top-0 lg:left-40 z-50 lg:w-[50%] w-full shadow-lg transition-transform transform -translate-y-full">
+  <% flash.keys.each do |k| %>
+    <div class="sm:px-20 px-3 py-6 flex justify-center items-center gap-4 border-l-4 text-sm relative rounded <%= notification_class(k) %>">
+      <div id="progress-bar" class="h-1 absolute bottom-0 left-0 rounded <%= progress_bar_background(k) %>"></div>
+      <%= flash[k] %>
+      <div class="cursor-pointer" onclick="document.getElementById('flash').classList.add('hidden')">
+        &times;
+      </div>
+    </div>
+  <% end %>
+</div>

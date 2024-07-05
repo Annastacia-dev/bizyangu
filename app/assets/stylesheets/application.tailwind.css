@@ -8,6 +8,10 @@
   .btn-primary {
     @apply bg-primary text-white capitalize px-4 py-2 rounded hover:bg-transparent  hover:text-primary border-2 border-primary font-semibold text-sm cursor-pointer;
   }
+
+  .btn-secondary {
+    @apply bg-secondary/50 text-primary capitalize px-4 py-2 rounded hover:bg-secondary/70  hover:text-primary font-semibold text-sm cursor-pointer;
+  }
 }
 
 

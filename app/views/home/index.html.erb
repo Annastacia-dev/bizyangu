@@ -1,2 +1,6 @@
-<%= render 'header' %>
-<%= render 'footer' %>
+<% if current_user %>
+
+<% else %>
+  <%= render 'header' %>
+  <%= render 'footer' %>
+<% end %>

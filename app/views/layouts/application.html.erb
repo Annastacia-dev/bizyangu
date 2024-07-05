@@ -15,8 +15,41 @@
 
   <body class="min-h-screen bg-gray-50">
     <%= render 'home/navbar' %>
-    <main>
+    <main class="relative">
+      <% unless flash.empty? %>
+        <%= render 'layouts/flash' %>
+      <% end %>
+
       <%= yield %>
     </main>
+
+    <script>
+      document.addEventListener("turbo:load", () => {
+        const flash = document.getElementById('flash');
+        const progressBar = document.getElementById('progress-bar');
+        let progress = 100;
+        let intervalId;
+
+        if (flash) {
+          intervalId = setInterval(() => {
+            progress -= 1;
+            progressBar.style.width = `${progress}%`;
+
+            if (progress <= 0) {
+              clearInterval(intervalId);
+              flash.classList.add('hidden');
+            }
+          }, 50);
+        }
+
+        function closeFlash() {
+          const flash = document.getElementById('flash');
+          if (flash) {
+            flash.classList.add('hidden');
+          }
+        }
+      });
+    </script>
+
   </body>
 </html>
