@@ -19,10 +19,8 @@
 
     <%= render 'home/login' %>
 
-    <button class="btn-primary">
-      <%= link_to new_store_path do %>
-        get started
-      <% end %>
-    </button>
+    <%= link_to new_store_path, class:"btn-primary" do %>
+      get started
+    <% end %>
   </div>
 </nav>

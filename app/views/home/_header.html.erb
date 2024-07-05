@@ -5,11 +5,9 @@
       Manage your inventory, sales, and finances effortlessly with our user-friendly platform, designed to streamline your business operations and provide real-time insights, helping you make informed decisions and achieve greater efficiency.
     </p>
 
-    <button class="btn-primary">
-      <%= link_to new_store_path do %>
-        get started
-      <% end %>
-    </button>
+    <%= link_to new_store_path, class:"btn-primary" do %>
+      get started
+    <% end %>
   </div>
 
   <%= image_tag ('data-analyzer.webp'), class: 'w-[80%]' %>
