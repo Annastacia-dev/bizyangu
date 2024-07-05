@@ -1,11 +1,36 @@
-<footer class="bg-primary text-white py-6 text-sm">
-    <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2024 Biz Yangu. All rights reserved.</p>
-        <div class="space-x-6 mt-4">
-            <a href="#" class="text-gray-400 hover:text-white">About Us</a>
-            <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
-            <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
-            <a href="#" class="text-gray-400 hover:text-white">Contact Us</a>
+<footer class="bg-primary text-white py-10 text-xs capitalize">
+    <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-4">
+
+            <%= link_to root_path, class:"flex items-center gap-3" do %>
+                <%= image_tag 'icon-v1.png', alt: 'logo', class: 'w-6' %>
+                <p class="capitalize font-bold"> biz yangu </p>
+            <% end %>
+
+            <div class="text-gray-300">
+             <h5 class="text-secondary font-semibold mb-5"> My Account </h5>
+             <%= render "home/account_links", resource_name: :user %>
+            </div>
+
+            <div class="text-gray-300 flex flex-col gap-3">
+              <h5 class="text-secondary font-semibold mb-5"> quick links </h5>
+              <a href="#" class="hover:text-white">home</a>
+              <a href="#" class="hover:text-white">about</a>
+              <a href="#" class="hover:text-white">solutions</a>
+              <a href="#" class="hover:text-white">pricing & plans</a>
+              <a href="#" class="hover:text-white">reviews</a>
+            </div>
+
+            <div class="text-gray-300 flex flex-col gap-3">
+              <h5 class="text-secondary font-semibold mb-5"> Legal </h5>
+              <a href="#" class="hover:text-white">Privacy Policy</a>
+              <a href="#" class="hover:text-white">Terms & Conditions</a>
+              <a href="#" class="hover:text-white">cookie policy</a>
+              <a href="#" class="hover:text-white">disclaimer</a>
+            </div>
         </div>
+
+        <hr class="border-gray-700 my-8" />
+        <p class="text-center">&copy; 2024 Biz Yangu. All rights reserved.</p>
     </div>
 </footer>
