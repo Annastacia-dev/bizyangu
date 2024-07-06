@@ -12,6 +12,10 @@
   .btn-secondary {
     @apply bg-secondary/50 text-primary capitalize px-4 py-2 rounded hover:bg-secondary/70  hover:text-primary font-semibold text-sm cursor-pointer;
   }
+
+  .btn-danger {
+    @apply bg-red-600 text-white capitalize px-4 py-2 rounded hover:bg-transparent hover:bg-red-500 font-semibold text-sm cursor-pointer;
+  }
 }
 
 

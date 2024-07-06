@@ -13,9 +13,15 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
-  <body class="min-h-screen bg-gray-50">
-    <%= render 'home/navbar' %>
-    <main class="relative">
+  <body class="min-h-screen bg-gray-50 relative">
+
+    <% if current_user %>
+      <%= render 'home/sidebar' %>
+    <% else %>
+      <%= render 'home/navbar' %>
+    <% end %>
+
+    <main class="">
       <% unless flash.empty? %>
         <%= render 'layouts/flash' %>
       <% end %>
