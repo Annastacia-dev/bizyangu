@@ -21,7 +21,7 @@
       <%= render 'home/navbar' %>
     <% end %>
 
-    <main class="">
+    <main id="mainContainer" class="<%= current_user ? 'md:pl-20 pt-10': '' %>">
       <% unless flash.empty? %>
         <%= render 'layouts/flash' %>
       <% end %>

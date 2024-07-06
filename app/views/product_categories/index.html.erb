@@ -1,0 +1,39 @@
+<div class="flex flex-col gap-10 min-h-screen pb-10 mx-auto container px-6">
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-semibold text-xl">Product categories (<%= @product_categories.size %>)</h1>
+    <%= render 'components/drawer', button_class: 'btn-primary', button_icon: '', button_text: 'new category', id: 'new_category', title: 'new product category' do %>
+      <%= render 'form', product_category: @store.product_categories.new %>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col mt-10">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="dark:bg-black/10 bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            #
+          </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            category
+          </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <% @product_categories.each_with_index do |category, index| %>
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm">
+            <%= (index + 1).to_s.rjust(2, '0') %>.
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm capitalize hover:underline">
+            <%= link_to category.name, product_category_url(category)  %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <div>
+</div>

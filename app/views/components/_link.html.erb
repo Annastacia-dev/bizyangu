@@ -1,0 +1,8 @@
+<% links.each do |link| %>
+  <li>
+    <%= link_to link[:path], class: "px-4 py-2 hover:bg-gray-200 hover:text-gray-900 flex gap-2 items-center " do %>
+      <i class="<%= link[:icon] %>"></i>
+      <span class="sidebar-text"><%= link[:title] %></span>
+    <% end %>
+  </li>
+<% end %>

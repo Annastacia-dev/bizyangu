@@ -16,7 +16,15 @@
   .btn-danger {
     @apply bg-red-600 text-white capitalize px-4 py-2 rounded hover:bg-transparent hover:bg-red-500 font-semibold text-sm cursor-pointer;
   }
-  
+
+  .text-field {
+    @apply border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded;
+  }
+
+  .form-label {
+    @apply capitalize text-sm font-medium;
+  }
+
   .sidebar-text {
     display: block;
     transition: display 0.3s ease;
@@ -25,7 +33,7 @@
     display: none;
   }
   .collapsed {
-    width: 3rem; /* Adjust as needed */
+    width: 3rem;
   }
 
 }

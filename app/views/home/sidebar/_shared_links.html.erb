@@ -1,11 +1,7 @@
-<li>
-  <%= link_to root_path, class: "px-4 py-2 hover:bg-gray-200 hover:text-gray-900 flex gap-2 items-center " do %>
-    <i class="fa-solid fa-house"></i>
-    <span class="sidebar-text">dashboard</span>
-  <% end %>
-</li>
+<%= render 'components/link', links: shared_links %>
+
 <li class="absolute bottom-10">
-  <%= button_to destroy_user_session_path, method: :delete, class: "px-4 py-2 hover:bg-red-500 hover:text-white flex gap-2 items-center text-red-500 w-40 " do %>
+  <%= button_to destroy_user_session_path, method: :delete, class: "px-4 py-2 hover:bg-red-500 hover:text-white flex gap-2 items-center text-red-500" do %>
     <i class="fa-solid fa-power-off"></i>
     <span class="sidebar-text">Logout</span>
   <% end %>

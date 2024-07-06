@@ -19,16 +19,20 @@
     const sidebar = document.getElementById("sidebar");
     const toggleButton = document.getElementById("toggleButton");
     const toggleIcon = document.getElementById("toggleIcon");
+    const mainContainer = document.getElementById("mainContainer");
 
     const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
 
     if (isCollapsed) {
       sidebar.classList.add("collapsed");
-      sidebar.classList.replace("w-40", "w-12");
+      sidebar.classList.add("w-12");
+      mainContainer.classList.replace("md:pl-48", "md:pl-20")
       toggleIcon.classList.replace("fa-xmark", "fa-bars");
     } else {
       sidebar.classList.remove("collapsed");
-      sidebar.classList.replace("w-12", "w-40");
+      sidebar.classList.add("w-40");
+      mainContainer.classList.replace("md:pl-20", "md:pl-48")
+
       toggleIcon.classList.replace("fa-bars", "fa-xmark");
     }
 
@@ -37,10 +41,13 @@
 
       if (sidebar.classList.contains("collapsed")) {
         sidebar.classList.replace("w-40", "w-12");
+        mainContainer.classList.replace("md:pl-48", "md:pl-20")
         toggleIcon.classList.replace("fa-xmark", "fa-bars");
         localStorage.setItem("sidebarCollapsed", "true");
+
       } else {
         sidebar.classList.replace("w-12", "w-40");
+        mainContainer.classList.replace("md:pl-20", "md:pl-48")
         toggleIcon.classList.replace("fa-bars", "fa-xmark");
         localStorage.setItem("sidebarCollapsed", "false");
       }

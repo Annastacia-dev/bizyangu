@@ -1,30 +1,34 @@
 # == Schema Information
 #
-# Table name: stores
+# Table name: product_categories
 #
 #  id         :uuid             not null, primary key
-#  contact    :string
-#  location   :string
 #  name       :string
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  store_id   :uuid             not null
 #
-class Store < ApplicationRecord
+# Indexes
+#
+#  index_product_categories_on_store_id  (store_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (store_id => stores.id)
+#
+class ProductCategory < ApplicationRecord
   has_paper_trail
-  has_one_attached :logo
 
   include Sluggable
   friendly_slug_scope to_slug: :name
 
+  # associations
+  belongs_to :store
+  has_many :products
+
   # validations
   validates :name, presence: true, uniqueness: true
-
-  # associations
-  has_many :users, dependent: :destroy
-  has_many :product_categories, dependent: :destroy
-  has_many :products, through: :product_categories, dependent: :destroy
-  accepts_nested_attributes_for :users, allow_destroy: true
 
   # callbacks
   before_validation :downcase_name

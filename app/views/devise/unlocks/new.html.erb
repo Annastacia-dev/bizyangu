@@ -7,8 +7,8 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="flex flex-col gap-2">
-          <%= f.label :email, class: 'capitalize text-sm font-medium' %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+          <%= f.label :email, class: 'form-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "text-field", required: true %>
         </div>
 
         <%= f.submit "Resend unlock instructions", class: 'btn-primary' %>

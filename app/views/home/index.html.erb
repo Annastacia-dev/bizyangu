@@ -1,5 +1,6 @@
 <% if current_user %>
  <% if current_user.store_admin? %>
+  <%= render "store/dashboard" %>
  <% elsif current_user.admin %>
  <% end %>
 <% else %>
