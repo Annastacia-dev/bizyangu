@@ -1,5 +1,10 @@
 <div class="flex flex-col gap-10 min-h-screen pb-10 mx-auto container lg:px-6 px-3">
 
+  <%= render 'components/breadcrumb', breadcrumbs: [
+    { text: 'home', path: root_path },
+    { text: 'products'}
+  ] %>
+
   <div class="flex md:flex-row flex-col justify-between md:items-center gap-3">
     <h1 class="font-semibold md:text-xl">Products (<%= @products.size %>)</h1>
     <%= render 'components/drawer', button_class: 'btn-primary', button_icon: '', button_text: 'new product', id: 'new_product', title: 'new product' do %>
