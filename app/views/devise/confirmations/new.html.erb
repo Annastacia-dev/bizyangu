@@ -1,16 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<div class="flex flex-col gap-10 min-h-screen pt-32 pb-10 mx-auto container px-6">
+  <h2 class="text-2xl font-semibold">Resend confirmation instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="grid md:grid-cols-2">
+    <div class="flex flex-col gap-12 md:w-1/2">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "flex flex-col gap-10" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <div class="flex flex-col gap-2">
+          <%= f.label :email, class: 'capitalize text-sm font-medium' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded", required: true %>
+        </div>
+
+        <%= f.submit "Resend confirmation instructions", class: 'btn-primary' %>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+
+    <%= image_tag 'confirm-account.png', class: ' w-[70%] md:flex hidden -mt-16' %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
