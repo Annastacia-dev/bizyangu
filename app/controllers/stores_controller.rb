@@ -11,7 +11,7 @@ class StoresController < ApplicationController
     respond_to do |format|
       if @store.save
         @store.users.each { |user| user.update(role: 'store_admin') }
-        format.html { redirect_to root_path, notice: "Store was successfully created."}
+        format.html { redirect_to root_path, notice: "Store was successfully created.A confirmation email has been sent to your email address."}
       else
         format.html { render :new, status: :unprocessable_entity}
       end
