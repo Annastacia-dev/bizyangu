@@ -3,16 +3,12 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @categories = @store.product_categories.map { |category| [category.name.titleize, category.id]}
+    @products = @store.products
   end
 
   # GET /products/1 or /products/1.json
   def show
-  end
-
-  # GET /products/new
-  def new
-    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -25,7 +21,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
+        format.html { redirect_to products_url, notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,7 +56,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

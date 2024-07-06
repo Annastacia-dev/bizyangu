@@ -1,21 +1,46 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="flex flex-col gap-10 min-h-screen pb-10 mx-auto container lg:px-6 px-3">
 
-  <% content_for :title, "Products" %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Products</h1>
-    <%= link_to "New product", new_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="products" class="min-w-full">
-    <% @products.each do |product| %>
-      <%= render product %>
-      <p>
-        <%= link_to "Show this product", product, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+  <div class="flex md:flex-row flex-col justify-between md:items-center gap-3">
+    <h1 class="font-semibold md:text-xl">Products (<%= @products.size %>)</h1>
+    <%= render 'components/drawer', button_class: 'btn-primary', button_icon: '', button_text: 'new product', id: 'new_product', title: 'new product' do %>
+      <%= render 'form', product: Product.new %>
     <% end %>
   </div>
+
+  <div class="flex flex-col mt-10 overflow-x-scroll lg text-xs">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="dark:bg-black/10 bg-gray-50">
+        <tr>
+          <th scope="col" class="lg:px-6 px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            #
+          </th>
+          <th scope="col" class="lg:px-6 px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            product
+          </th>
+          <th scope="col" class="lg:px-6 px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+            actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <% unless @products.empty? %>
+        <% @products.each_with_index do |product, index| %>
+          <tr>
+            <td class="lg:px-6 px-3 py-4 whitespace-nowrap">
+              <%= (index + 1).to_s.rjust(2, '0') %>.
+            </td>
+            <td class="lg:px-6 px-3 py-4 whitespace-nowrap capitalize hover:underline">
+              <%= link_to product.name, product_url(product)  %>
+            </td>
+            <td class="lg:px-6 px-3 py-4 whitespace-nowrap">
+              <%= button_to product, method: :delete, class: "text-red-500", title: "delete" do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <div>
 </div>

@@ -20,5 +20,21 @@
 #  fk_rails_...  (product_category_id => product_categories.id)
 #
 class Product < ApplicationRecord
+  has_paper_trail
+
+  include Sluggable
+  friendly_slug_scope to_slug: :name
+
+  # associations
   belongs_to :product_category
+
+  # callbacks
+  before_validation :downcase_name
+
+  # private methods
+  private
+
+  def downcase_name
+    self.name = name.downcase
+  end
 end
