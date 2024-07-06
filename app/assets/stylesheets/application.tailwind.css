@@ -16,6 +16,18 @@
   .btn-danger {
     @apply bg-red-600 text-white capitalize px-4 py-2 rounded hover:bg-transparent hover:bg-red-500 font-semibold text-sm cursor-pointer;
   }
+  
+  .sidebar-text {
+    display: block;
+    transition: display 0.3s ease;
+  }
+  .collapsed .sidebar-text {
+    display: none;
+  }
+  .collapsed {
+    width: 3rem; /* Adjust as needed */
+  }
+
 }
 
 

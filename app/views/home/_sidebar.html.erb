@@ -1,20 +1,8 @@
-<nav class="bg-gray-50 w-40 min-h-screen  shadow-lg rounded-lg fixed">
+<div id="sidebar" class="bg-gray-50  min-h-screen shadow-lg rounded-lg fixed transition-width duration-300 collapsed">
   <div class="flex flex-col justify-center gap-5">
-    <div class="flex flex-col gap-2 px-4 py-3 items-center">
-      <% if current_user.store_admin? %>
-        <% if @store.logo.attached? %>
-          <%= image_tag(@store.logo, alt: @store.name, class: 'w-10 h-10 object-cover') %>
-          <p class="capitalize font-semibold text-sm"> <%= @store.name %> </p>
-        <% else %>
-          <div class="bg-primary rounded-full h-10 w-10 flex justify-center items-center">
-            <%= image_tag('icon-v1.png', alt: 'biz yangu logo', class: 'w-5') %>
-          </div>
-          <p class="uppercase font-semibold text-xs"> <%= @store.name %> </p>
-        <% end %>
-      <% else %>
-        <%= image_tag('icon-v2.png', alt: 'biz yangu logo', class: 'w-5 object-cover') %>
-      <% end %>
-    </div>
+    <button id="toggleButton" class="self-start px-4 py-2">
+      <i id="toggleIcon" class="fa-solid fa-bars"></i>
+    </button>
     <ul class="text-xs capitalize font-semibold flex flex-col gap-4">
       <%= render 'home/sidebar/shared_links' %>
       <% if current_user.admin? %>
@@ -24,5 +12,38 @@
       <% end %>
     </ul>
   </div>
-</nav>
+</div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("toggleButton");
+    const toggleIcon = document.getElementById("toggleIcon");
+
+    const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
+
+    if (isCollapsed) {
+      sidebar.classList.add("collapsed");
+      sidebar.classList.replace("w-40", "w-12");
+      toggleIcon.classList.replace("fa-xmark", "fa-bars");
+    } else {
+      sidebar.classList.remove("collapsed");
+      sidebar.classList.replace("w-12", "w-40");
+      toggleIcon.classList.replace("fa-bars", "fa-xmark");
+    }
+
+    toggleButton.addEventListener("click", function() {
+      sidebar.classList.toggle("collapsed");
+
+      if (sidebar.classList.contains("collapsed")) {
+        sidebar.classList.replace("w-40", "w-12");
+        toggleIcon.classList.replace("fa-xmark", "fa-bars");
+        localStorage.setItem("sidebarCollapsed", "true");
+      } else {
+        sidebar.classList.replace("w-12", "w-40");
+        toggleIcon.classList.replace("fa-bars", "fa-xmark");
+        localStorage.setItem("sidebarCollapsed", "false");
+      }
+    });
+  });
+</script>
