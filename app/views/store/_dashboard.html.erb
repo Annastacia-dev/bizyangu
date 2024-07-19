@@ -1,4 +1,8 @@
 <div class="flex flex-col gap-5 min-h-screen pb-10 px-2 ">
   <h5 class="md:text-xl font-semibold capitalize px-2"><%= greeting %>, <%= current_user.name %></h5>
-  <%= render 'store/cards' %>
+  <div class="grid grid-cols-2">
+    <%= render 'store/cards' %>
+    <%= render 'store/calendar' %>
+  </div>
+
 </div>

@@ -1,11 +1,11 @@
-<div class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 gap-4 px-2">
- <% cards.each do |card| %>
-  <%= link_to card[:path], class: "bg-gray-100 shadow-lg rounded p-5 flex lg:flex-row justify-between flex-col gap-4 hover:bg-secondary/30 text-primary" do %>
-    <div class="text-sm font-medium  flex gap-2 items-center">
-      <i class="<%= card[:icon] %>"></i>
-      <p><%= card[:title] %></p>
-    </div>
-    <p class="md:text-5xl text-2xl font-bold"><%= card[:data] %></p>
+<div class="grid lg:grid-cols-3 grid-cols-1 gap-4 px-2 col-span-1">
+  <% cards.each do |card| %>
+    <%= link_to card[:path], class: "bg-gray-100 shadow-lg rounded p-5 flex lg:flex-row justify-between flex-col gap-4 hover:bg-secondary/30 text-primary h-20" do %>
+      <div class="text-sm font-medium  flex gap-2 items-center">
+        <i class="<%= card[:icon] %>"></i>
+        <p><%= card[:title] %></p>
+      </div>
+      <p class="md:text-5xl text-2xl font-bold"><%= card[:data] %></p>
+    <% end %>
   <% end %>
- <% end %>
 </div>
