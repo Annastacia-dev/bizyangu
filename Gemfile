@@ -77,4 +77,3 @@ gem "hotwire-livereload", group: [:development]
 gem "annotate", group: [:development]
 gem "byebug", group: [:development, :test]
 gem 'font-awesome-sass', '~> 6.5', '>= 6.5.2'
-gem 'simple_calendar', '~> 3.0', '>= 3.0.4'

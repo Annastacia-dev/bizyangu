@@ -1,0 +1,35 @@
+<div class="bg-gray-100 border border-gray-300 rounded-lg shadow-md p-4 text-xs w-72">
+  <div class="flex items-center justify-between mb-4">
+    <a href="<%= root_path(start_date: @prev_month) %>" class="text-primary hover:underline">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <h2 class="font-semibold"><%= @current_month.strftime('%B %Y') %></h2>
+    <a href="<%= root_path(start_date: @next_month) %>" class="text-primary hover:underline">
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <table class="w-full border-collapse">
+    <thead>
+      <tr>
+        <% %w(Sun Mon Tue Wed Thu Fri Sat).each do |day| %>
+          <th class="p-2 font-semibold border-b border-gray-300"><%= day %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% weeks = @days.in_groups_of(7, false) %>
+      <% weeks.each do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <td class="text-center">
+              <%= link_to day_path(day), class: "block p-2 border-b border-gray-300 hover:bg-secondary hover:text-white cursor-pointer #{'bg-primary text-white' if day == Date.today}" do %>
+                <%= day.day %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

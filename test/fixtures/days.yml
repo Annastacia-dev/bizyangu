@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: days
+#
+#  id         :uuid             not null, primary key
+#  date       :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  date: 2024-07-21 13:19:32
+
+two:
+  date: 2024-07-21 13:19:32

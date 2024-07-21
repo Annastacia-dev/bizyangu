@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-5 min-h-screen pb-10 px-2 ">
   <h5 class="md:text-xl font-semibold capitalize px-2"><%= greeting %>, <%= current_user.name %></h5>
-  <div class="grid grid-cols-2">
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
     <%= render 'store/cards' %>
     <%= render 'store/calendar' %>
   </div>
