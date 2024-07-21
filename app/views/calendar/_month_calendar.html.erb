@@ -1,12 +1,15 @@
+<% next_month_date = @current_month.next_month.beginning_of_month %>
 <div class="bg-gray-100 border border-gray-300 rounded-lg shadow-md p-4 text-xs w-72">
   <div class="flex items-center justify-between mb-4">
     <a href="<%= root_path(start_date: @prev_month) %>" class="text-primary hover:underline">
       <i class="fa-solid fa-arrow-left"></i>
     </a>
     <h2 class="font-semibold"><%= @current_month.strftime('%B %Y') %></h2>
-    <a href="<%= root_path(start_date: @next_month) %>" class="text-primary hover:underline">
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <% if next_month_date <= Date.today %>
+      <a href="<%= root_path(start_date: @next_month) %>" class="text-primary hover:underline">
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    <% end %>
   </div>
 
   <table class="w-full border-collapse">

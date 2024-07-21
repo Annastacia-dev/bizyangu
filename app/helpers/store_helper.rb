@@ -3,13 +3,13 @@ module StoreHelper
     [
       {
         title: "#{@current_month_name} Sales (#{@currency})",
-        data: @current_month_sales.to_i,
+        data: "#{currency_format @current_month_sales.to_i}",
         icon: 'fa-solid fa-coins',
         path: sales_path
       },
       {
         title: "#{@current_month_name} Stock (#{@currency})",
-        data: @current_month_stock.to_i,
+        data: "#{@current_month_stock.to_i}",
         icon: 'fa-solid fa-boxes-stacked',
         path: sales_path
       },

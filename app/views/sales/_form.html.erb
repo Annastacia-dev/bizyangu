@@ -9,7 +9,7 @@
           <span> date </span>
           <span class="text-red-500">*</span>
         <% end %>
-        <%= f.date_field :date, class: "text-field", required: true %>
+        <%= f.date_field :date, class: "text-field", max: Date.today.strftime('%Y-%m-%d'), required: true %>
       </div>
     <% end %>
 
