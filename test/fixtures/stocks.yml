@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: stocks
+#
+#  id         :uuid             not null, primary key
+#  cost       :string
+#  date       :datetime
+#  quantity   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  day_id     :uuid             not null
+#  product_id :uuid             not null
+#
+# Indexes
+#
+#  index_stocks_on_day_id      (day_id)
+#  index_stocks_on_product_id  (product_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (day_id => days.id)
+#  fk_rails_...  (product_id => products.id)
+#
+
+one:
+  date: 2024-07-21 14:09:06
+  product: one
+  cost: MyString
+  quantity: 1
+
+two:
+  date: 2024-07-21 14:09:06
+  product: two
+  cost: MyString
+  quantity: 1

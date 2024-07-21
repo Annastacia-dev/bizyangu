@@ -4,6 +4,7 @@
 #
 #  id         :uuid             not null, primary key
 #  contact    :string
+#  currency   :string           default("KES")
 #  location   :string
 #  name       :string
 #  slug       :string

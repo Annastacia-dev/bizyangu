@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def set_store
     if current_user.store_admin?
       @store = current_user.store
+      @currency = @store.currency
     end
   end
 end

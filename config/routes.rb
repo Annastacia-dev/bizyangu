@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :days
+  resources :expenses
   resources :product_categories
   resources :products
+  resources :sales
+  resources :stocks
   resources :stores
 
 

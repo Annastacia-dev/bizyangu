@@ -1,0 +1,33 @@
+<div data-controller="dropdown" class='relative font-courier'>
+  <button data-action="click->dropdown#toggle" class="flex items-center gap-1 px-4 py-2 w-full btn-primary">
+    <p class='flex items-center gap-2 capitalize'>
+      <span class><%= title %></span>
+      <i class="<%= icon_class %>"></i>
+    </p>
+  </button>
+
+  <ul data-dropdown-target="menu" class="hidden  rounded mt-2 flex flex-col gap-3 bg-gray-50 absolute right-0  text-sm w-60 p-2 z-10 capitalize border">
+    <% items.each_with_index do |item, index| %>
+      <li class='p-1'>
+        <% if item[:type] == 'drawer' %>
+          <%= render 'components/drawer', button_icon: item[:icon_class], button_text: item[:menu_text], title: item[:menu_text], id: item[:id], button_class: 'px-4'  do %>
+            <%= render item[:view] %>
+          <% end %>
+        <% elsif item[:type] == 'button' %>
+          <%= button_to item[:path], method: item[:method], class: "px-4 flex items-center gap-4 #{item[:method] == 'delete' ? 'text-red-500' : ''}", data: (item[:method] === 'delete' ? { confirm: "Are you sure?", turbo_confirm: "Are you sure?" } : {}) do %>
+            <i class="<%= item[:icon_class] %>"></i>
+            <%= item[:menu_text] %>
+          <% end %>
+        <% else %>
+          <%= link_to item[:path], class: "px-4 flex items-center gap-4" do %>
+            <i class="<%= item[:icon_class] %>"></i>
+            <%= item[:menu_text] %>
+          <% end %>
+        <% end %>
+      </li>
+      <% if index != (items.length - 1) %>
+       <hr class="border" />
+      <% end %>
+    <% end %>
+  </ul>
+</div>

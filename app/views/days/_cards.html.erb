@@ -1,5 +1,5 @@
 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 px-2 col-span-3">
-  <% cards.each do |card| %>
+  <% day_cards.each do |card| %>
     <%= link_to card[:path], class: "bg-gray-100 shadow-lg rounded p-5 flex flex-col justify-between gap-4 hover:bg-secondary/30 text-primary h-28" do %>
       <div class="text-sm font-medium  flex gap-2 items-center">
         <i class="<%= card[:icon] %>"></i>

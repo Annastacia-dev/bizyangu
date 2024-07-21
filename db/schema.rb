@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_21_101932) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -47,6 +47,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_101932) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "store_id", null: false
+    t.index ["store_id"], name: "index_days_on_store_id"
+  end
+
+  create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.integer "frequency", default: 0
+    t.string "amount"
+    t.uuid "store_id", null: false
+    t.uuid "day_id", null: false
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_expenses_on_day_id"
+    t.index ["store_id"], name: "index_expenses_on_store_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -78,6 +93,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_101932) do
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
+  create_table "sales", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.uuid "day_id", null: false
+    t.string "buying_price"
+    t.string "selling_price"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_sales_on_day_id"
+    t.index ["product_id"], name: "index_sales_on_product_id"
+  end
+
+  create_table "stocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "date"
+    t.uuid "product_id", null: false
+    t.uuid "day_id", null: false
+    t.string "cost"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_stocks_on_day_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+  end
+
   create_table "stores", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -85,6 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_101932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.string "currency", default: "KES"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -130,7 +170,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_101932) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "days", "stores"
+  add_foreign_key "expenses", "days"
+  add_foreign_key "expenses", "stores"
   add_foreign_key "product_categories", "stores"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "sales", "days"
+  add_foreign_key "sales", "products"
+  add_foreign_key "stocks", "days"
+  add_foreign_key "stocks", "products"
   add_foreign_key "users", "stores"
 end

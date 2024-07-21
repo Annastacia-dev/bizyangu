@@ -4,6 +4,7 @@
 #
 #  id         :uuid             not null, primary key
 #  contact    :string
+#  currency   :string           default("KES")
 #  location   :string
 #  name       :string
 #  slug       :string
@@ -24,6 +25,10 @@ class Store < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :product_categories, dependent: :destroy
   has_many :products, through: :product_categories, dependent: :destroy
+  has_many :days, dependent: :destroy
+  has_many :sales, through: :days, dependent: :destroy
+  has_many :stocks, through: :days, dependent: :destroy
+  has_many :expenses, dependent: :destroy
   accepts_nested_attributes_for :users, allow_destroy: true
 
   # callbacks

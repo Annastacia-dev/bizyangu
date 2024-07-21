@@ -49,4 +49,8 @@ module ApplicationHelper
       "Good Evening"
     end
   end
+
+  def currency_format(amount)
+    number_to_currency(amount, unit: "", delimiter: ",", separator: ".", precision: 0)
+  end
 end
