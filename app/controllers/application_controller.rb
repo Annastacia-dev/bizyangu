@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
       @store = current_user.store
       @currency = @store.currency
       @products = @store.products.order(:name)
+      @sales = @store.sales
+      @stocks = @store.stocks
     end
   end
 end

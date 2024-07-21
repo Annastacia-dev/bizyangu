@@ -2,14 +2,14 @@ module StoreHelper
   def store_cards
     [
       {
-        title: "Total Sales (#{@currency})",
-        data: @store.sales.sum(&:selling_price).to_i,
+        title: "#{@current_month_name} Sales (#{@currency})",
+        data: @current_month_sales.to_i,
         icon: 'fa-solid fa-coins',
         path: sales_path
       },
       {
-        title: "Total Stock (#{@currency})",
-        data: @store.stocks.sum(&:cost).to_i,
+        title: "#{@current_month_name} Stock (#{@currency})",
+        data: @current_month_stock.to_i,
         icon: 'fa-solid fa-boxes-stacked',
         path: sales_path
       },
