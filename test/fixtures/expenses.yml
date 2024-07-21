@@ -3,7 +3,7 @@
 # Table name: expenses
 #
 #  id         :uuid             not null, primary key
-#  amount     :string
+#  amount     :float
 #  date       :datetime
 #  frequency  :integer          default("once")
 #  title      :string

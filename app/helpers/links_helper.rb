@@ -10,7 +10,7 @@ module LinksHelper
 
   def day_links
     [
-      { path: new_sale_path, icon_class: 'fa-solid fa-coins', menu_text: 'add sale' },
+      { path: new_sale_path, icon_class: 'fa-solid fa-coins', menu_text: 'add sale', type: 'drawer', view: 'sales/form' },
       { path: new_expense_path, icon_class: 'fa-solid fa-money-bills', menu_text: 'add expense' },
       { path: new_stock_path, icon_class: 'fa-solid fa-boxes-stacked', menu_text: 'add stock' }
     ]

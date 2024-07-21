@@ -3,7 +3,7 @@
 # Table name: stocks
 #
 #  id         :uuid             not null, primary key
-#  cost       :string
+#  cost       :float
 #  date       :datetime
 #  quantity   :integer
 #  created_at :datetime         not null

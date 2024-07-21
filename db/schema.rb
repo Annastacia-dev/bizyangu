@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
   create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.integer "frequency", default: 0
-    t.string "amount"
+    t.float "amount"
     t.uuid "store_id", null: false
     t.uuid "day_id", null: false
     t.datetime "date"
@@ -96,8 +96,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
   create_table "sales", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "product_id", null: false
     t.uuid "day_id", null: false
-    t.string "buying_price"
-    t.string "selling_price"
+    t.float "buying_price"
+    t.float "selling_price"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
     t.datetime "date"
     t.uuid "product_id", null: false
     t.uuid "day_id", null: false
-    t.string "cost"
+    t.float "cost"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

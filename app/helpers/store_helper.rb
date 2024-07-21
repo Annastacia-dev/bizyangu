@@ -1,15 +1,15 @@
 module StoreHelper
-  def cards
+  def store_cards
     [
       {
-        title: 'Sales',
-        data: @store.sales.size,
+        title: "Total Sales (#{@currency})",
+        data: @store.sales.sum(&:selling_price).to_i,
         icon: 'fa-solid fa-coins',
         path: sales_path
       },
       {
-        title: 'Stock',
-        data: @store.stocks.size,
+        title: "Total Stock (#{@currency})",
+        data: @store.stocks.sum(&:cost).to_i,
         icon: 'fa-solid fa-boxes-stacked',
         path: sales_path
       },

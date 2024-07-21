@@ -3,9 +3,9 @@
 # Table name: sales
 #
 #  id            :uuid             not null, primary key
-#  buying_price  :string
+#  buying_price  :float
 #  date          :datetime
-#  selling_price :string
+#  selling_price :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  day_id        :uuid             not null

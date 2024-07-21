@@ -10,7 +10,7 @@
     <% items.each_with_index do |item, index| %>
       <li class='p-1'>
         <% if item[:type] == 'drawer' %>
-          <%= render 'components/drawer', button_icon: item[:icon_class], button_text: item[:menu_text], title: item[:menu_text], id: item[:id], button_class: 'px-4'  do %>
+          <%= render 'components/drawer', button_icon: item[:icon_class], button_text: item[:menu_text], title: item[:menu_text], id: item[:id], button_class: 'px-4 flex items-center gap-4 capitalize'  do %>
             <%= render item[:view] %>
           <% end %>
         <% elsif item[:type] == 'button' %>

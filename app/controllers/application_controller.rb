@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     if current_user.store_admin?
       @store = current_user.store
       @currency = @store.currency
+      @products = @store.products.order(:name)
     end
   end
 end

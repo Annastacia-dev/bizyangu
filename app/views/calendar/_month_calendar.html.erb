@@ -22,9 +22,17 @@
       <% weeks.each do |week| %>
         <tr>
           <% week.each do |day| %>
-            <td class="text-center">
-              <%= link_to day_path(day), class: "block p-2 border-b border-gray-300 hover:bg-secondary hover:text-white cursor-pointer #{'bg-primary text-white' if day == Date.today}" do %>
-                <%= day.day %>
+            <td class="text-center border">
+              <% if day < @current_month_start || day > @current_month_end %>
+                <div class="block p-2"></div>
+              <% elsif  day > Date.today %>
+                <div class="block p-2 cursor-not-allowed bg-gray-200 text-gray-400">
+                  <%= day.day %>
+                </div>
+              <% else %>
+                <%= link_to day_path(day), class: "block p-2 hover:bg-secondary hover:text-white cursor-pointer #{'bg-primary text-white' if day == Date.today}" do %>
+                  <%= day.day %>
+                <% end %>
               <% end %>
             </td>
           <% end %>

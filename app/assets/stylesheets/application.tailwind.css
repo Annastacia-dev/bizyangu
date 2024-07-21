@@ -21,6 +21,10 @@
     @apply border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded;
   }
 
+  .select-field {
+    @apply border border-gray-600 outline-none px-2 py-2 bg-transparent text-sm rounded capitalize;
+  }
+
   .form-label {
     @apply capitalize text-sm font-medium;
   }
