@@ -2,7 +2,9 @@ class HomeController < ApplicationController
   def index
     set_dates
     set_calendar
-    calculate_current_month_sales
+    if @store
+      calculate_current_month_sales
+    end
   end
 
   private
