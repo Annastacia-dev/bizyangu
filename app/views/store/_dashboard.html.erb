@@ -5,9 +5,13 @@
     </h5>
     <%= render 'components/dropdown', title: 'actions', icon_class: "fa-solid fa-caret-down", items: day_links %>
   </div>
-  <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
-    <%= render 'store/cards' %>
-    <%= render 'store/calendar' %>
+  <div class="grid lg:grid-cols-9 md:grid-cols-2 gap-4">
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 px-2 col-span-6">
+     <%= render 'store/cards' %>
+    </div>
+    <div class="lg:ml-16">
+      <%= render 'store/calendar' %>
+    </div>
   </div>
 
 </div>
