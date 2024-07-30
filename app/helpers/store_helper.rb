@@ -11,7 +11,7 @@ module StoreHelper
         title: "#{@current_month_name} Stock (#{@currency})",
         data: "#{currency_format @current_month_stock.to_i}",
         icon: 'fa-solid fa-boxes-stacked',
-        path: sales_path
+        path: stocks_path
       },
       {
         title: 'Categories',

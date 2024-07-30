@@ -1,4 +1,4 @@
-<%= form_with(model: Stock.new, class: "contents") do |f| %>
+<%= form_with(model: (defined?(stock) ? stock : Stock.new), class: "contents") do |f| %>
 
   <div class="flex flex-col gap-5 lg:w-1/2 my-5">
     <% if @day %>
@@ -15,7 +15,7 @@
 
     <div class="flex flex-col gap-2">
       <%= f.label :product_id, "Select Product" %>
-      <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name, @products&.first&.id), {}, { class: 'select-field', required: true } %>
+      <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name, (defined?(stock) ? stock.product_id : @products.first.id)), {}, { class: 'select-field', required: true } %>
     </div>
 
 

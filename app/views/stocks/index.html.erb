@@ -1,0 +1,64 @@
+<div class="flex flex-col gap-10 min-h-screen pb-10 mx-auto container lg:px-6 px-3">
+
+  <%= render 'components/breadcrumb', breadcrumbs: [
+    { text: 'home', path: root_path },
+    { text: 'stocks'},
+    { text: "#{@current_month.strftime('%B %Y')}"}
+  ] %>
+
+
+  <div class="flex justify-between items-center mb-4">
+    <%= link_to  stocks_path(month: @current_month.prev_month), class: "btn btn-primary" do %>
+      <i class="fa-solid fa-circle-chevron-left"></i>
+    <% end %>
+
+    <h5 class="uppercase font-semibold"><%= @current_month.strftime("%B %Y") %></h5>
+
+    <%= link_to stocks_path(month: @current_month.next_month), class: "btn btn-primary" do %>
+      <i class="fa-solid fa-circle-chevron-right"></i>
+    <% end if @current_month < Date.current.beginning_of_month %>
+  </div>
+
+  <% @stocks.each do |date, stocks| %>
+    <div class="px-4 py-2 text-sm font-medium bg-gray-200"><%= date.strftime("%B %d, %Y") %></div>
+
+    <div class="flex flex-col mt-2 overflow-x-scroll lg text-xs">
+      <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"> # </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"> Product </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"> quantity </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"> cost </th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"> actions </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <% stocks.each_with_index do |stock, index| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap ">
+              <%= index + 1 %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap capitalize">
+              <%= stock.product.name %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap capitalize">
+              <%= currency_format stock.quantity %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap capitalize">
+              <%= currency_format stock.cost.to_i %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap capitalize">
+              <%= render 'components/drawer', button_class: 'text-blue-500', button_icon: 'fa-solid fa-pencil', button_text: '', id: 'edit_sale', title: 'edit sale' do %>
+                <%= render 'stocks/form', stock: stock %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
+      </table>
+    </div>
+
+  <% end %>
+</div>

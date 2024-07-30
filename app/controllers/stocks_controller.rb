@@ -2,6 +2,11 @@ class StocksController < ApplicationController
 
   before_action :set_day, only: %i[create]
 
+  def index
+    @current_month = params[:month] ? Date.parse(params[:month]) : Date.current.beginning_of_month
+    @stocks = @store.stocks.where(date: @current_month..@current_month.end_of_month).group_by { |stock| stock.date.to_date }
+  end
+
   def create
     @stock = @store.stocks.new(stock_params)
     @stock.day = @day
