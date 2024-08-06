@@ -11,8 +11,9 @@ module LinksHelper
   def day_links
     [
       { path: new_sale_path, icon_class: 'fa-solid fa-coins', menu_text: 'add sale', type: 'drawer', view: 'sales/form' },
-      { path: new_expense_path, icon_class: 'fa-solid fa-money-bills', menu_text: 'add expense', type: 'drawer', view: 'expenses/form' },
-      { path: new_stock_path, icon_class: 'fa-solid fa-boxes-stacked', menu_text: 'add stock', type: 'drawer', view: 'stocks/form' }
+      { path: new_expense_path, icon_class: 'fa-solid fa-money-bill-wave', menu_text: 'add expense', type: 'drawer', view: 'expenses/form' },
+      { path: new_stock_path, icon_class: 'fa-solid fa-boxes-stacked', menu_text: 'add stock', type: 'drawer', view: 'stocks/form' },
+      { path: new_expense_item_path, icon_class: 'fa-solid fa-bag-shopping', menu_text: 'add expense item', type: 'drawer', view: 'expense_items/form' }
     ]
   end
 

@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+
+  def after_sign_in_path_for(resource)
+    sign_in(resource, remember_me: true)
+    super(resource)
+  end
+
   def set_store
     if current_user.store_admin?
       @store = current_user.store

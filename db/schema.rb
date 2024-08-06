@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_06_092639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -51,17 +51,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
     t.index ["store_id"], name: "index_days_on_store_id"
   end
 
-  create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "expense_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.integer "frequency", default: 0
     t.float "amount"
     t.uuid "store_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_expense_items_on_store_id"
+  end
+
+  create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "day_id", null: false
+    t.uuid "expense_item_id", null: false
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["day_id"], name: "index_expenses_on_day_id"
-    t.index ["store_id"], name: "index_expenses_on_store_id"
+    t.index ["expense_item_id"], name: "index_expenses_on_expense_item_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -171,8 +178,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_122018) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "days", "stores"
+  add_foreign_key "expense_items", "stores"
   add_foreign_key "expenses", "days"
-  add_foreign_key "expenses", "stores"
+  add_foreign_key "expenses", "expense_items"
   add_foreign_key "product_categories", "stores"
   add_foreign_key "products", "product_categories"
   add_foreign_key "sales", "days"

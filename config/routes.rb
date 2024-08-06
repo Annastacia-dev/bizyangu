@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :days
   resources :expenses
+  resources :expense_items
   resources :product_categories
   resources :products
   resources :sales

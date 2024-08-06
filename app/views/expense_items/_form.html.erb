@@ -1,0 +1,28 @@
+<%= form_with(model: (defined?(expense_item) ? expense_item : ExpenseItem.new), class: "contents") do |f| %>
+  <div class="flex flex-col gap-5 lg:w-1/2 my-5">
+    <div class="flex flex-col gap-1">
+      <%= f.label :frequency %>
+      <%= f.select :frequency, ExpenseItem.frequency_options, {}, class: "select-field", required: true %>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <%= f.label :title, class: 'form-label' do %>
+        <span>title</span>
+        <span class="text-red-500">*</span>
+      <% end %>
+      <%= f.text_field :title, class: "text-field", required: true %>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <%= f.label :amount, class: 'form-label' do %>
+        <span>amount</span>
+        <span class="text-red-500">*</span>
+      <% end %>
+      <%= f.text_field :amount, class: "text-field", required: true %>
+    </div>
+
+    <div class="flex gap-5">
+      <%= f.submit class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>

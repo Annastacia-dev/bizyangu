@@ -19,8 +19,7 @@ export default class extends Controller {
     });
   }
 
-  toggle(event) {
-    event.preventDefault();
+  toggle() {
     if (this.drawerTarget.classList.contains("hidden")) {
       this.open();
     } else {
@@ -32,8 +31,7 @@ export default class extends Controller {
     this.drawerTarget.classList.remove("hidden");
   }
 
-  close(event) {
-    event.preventDefault();
+  close() {
     this.drawerTarget.classList.add("hidden");
   }
 }

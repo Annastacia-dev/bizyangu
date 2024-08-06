@@ -14,10 +14,10 @@ module StoreHelper
         path: stocks_path
       },
       {
-        title: 'Categories',
-        data: @store.product_categories.size,
-        icon: 'fa-solid fa-layer-group',
-        path: product_categories_path
+        title: "#{@current_month_name} Expenses (#{@currency})",
+        data: "#{currency_format @current_month_expenses.to_i}",
+        icon: 'fa-solid fa-money-bill-wave',
+        path: expenses_path
       },
       {
         title: 'Products',

@@ -1,17 +1,25 @@
-<div class="flex flex-col gap-5 min-h-screen pb-10 px-2 ">
-  <div class="flex lg:flex-row flex-col justify-between gap-3 px-2">
+<div class="flex flex-col gap-10 min-h-screen pb-10 px-2 ">
+  <div class="flex lg:flex-row flex-col justify-between gap-3 lg:px-16 px-2">
     <h5 class="md:text-md font-semibold uppercase">
       <%= greeting %>, <%= current_user.name %>
     </h5>
     <%= render 'components/dropdown', title: 'actions', icon_class: "fa-solid fa-caret-down", items: day_links %>
   </div>
-  <div class="grid lg:grid-cols-9 md:grid-cols-2 gap-4">
-    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 px-2 col-span-6">
-     <%= render 'store/cards' %>
+  <div class="grid lg:grid-cols-9 md:grid-cols-2 gap-2">
+
+    <div class="flex flex-col col-span-6 gap-8 px-2">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4  ">
+          <%= render 'store/cards' %>
+        </div>
+      <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+        <%= render 'store/expenses_cards' %>
+      </div>
     </div>
-    <div class="lg:ml-16">
+
+    <div class="lg:ml-12 col-span-3">
       <%= render 'store/calendar' %>
     </div>
+
   </div>
 
 </div>
