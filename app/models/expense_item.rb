@@ -4,7 +4,7 @@
 #
 #  id         :uuid             not null, primary key
 #  amount     :float
-#  frequency  :integer          default("once")
+#  frequency  :integer          default("daily")
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -29,6 +29,9 @@ class ExpenseItem < ApplicationRecord
     monthly: 2,
     yearly: 3
   }
+
+  # associations
+  has_many :expenses
 
   # callbacks
   before_validation :downcase_title

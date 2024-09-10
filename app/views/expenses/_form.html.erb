@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-5 lg:w-1/2 my-5">
     <div class="flex flex-col gap-1">
       <%= f.label :expense_item %>
-      <%= f.select :expense_item, options_for_select(ExpenseItem.all.map { |item| [item.title, item.id, { data: { amount: item.amount } }] }, selected: (defined?(expense) ? expense.expense_item_id : nil)), {}, class: "select-field", data: { expense_target: "select" } %>
+      <%= f.select :expense_item_id, options_for_select(ExpenseItem.all.map { |item| [item.title, item.id, { data: { amount: item.amount } }] }, selected: (defined?(expense) ? expense.expense_item_id : nil)), {}, class: "select-field", data: { expense_target: "select" } %>
     </div>
 
     <div class="flex flex-col gap-1">
@@ -18,7 +18,7 @@
           <span> date </span>
           <span class="text-red-500">*</span>
         <% end %>
-        <%= f.date_field :date, class: "text-field", max: Date.today.strftime('%Y-%m-%d'), required: true %>
+        <%= f.date_field :date, value: Date.today.strftime('%Y-%m-%d'), class: "text-field", max: Date.today.strftime('%Y-%m-%d'), required: true %>
       </div>
     <% end %>
 

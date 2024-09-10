@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
       @products = @store.products.order(:name)
       @sales = @store.sales
       @stocks = @store.stocks
+      @expenses = @store.expenses
     end
   end
 end

@@ -3,6 +3,7 @@
 # Table name: expenses
 #
 #  id              :uuid             not null, primary key
+#  amount          :float
 #  date            :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

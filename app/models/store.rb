@@ -29,6 +29,7 @@ class Store < ApplicationRecord
   has_many :sales, through: :days, dependent: :destroy
   has_many :stocks, through: :days, dependent: :destroy
   has_many :expense_items, dependent: :destroy
+  has_many :expenses, through: :expense_items, dependent: :destroy
 
   accepts_nested_attributes_for :users, allow_destroy: true
 

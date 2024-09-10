@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_06_092639) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_10_095041) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_092639) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "amount"
     t.index ["day_id"], name: "index_expenses_on_day_id"
     t.index ["expense_item_id"], name: "index_expenses_on_expense_item_id"
   end

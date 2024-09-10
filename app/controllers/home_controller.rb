@@ -29,6 +29,7 @@ class HomeController < ApplicationController
   def calculate_current_month_sales
     @current_month_sales = @sales.where(date: @current_month_start..@current_month_end).sum(:selling_price)
     @current_month_stock = @stocks.where(date: @current_month_start..@current_month_end).sum(:cost)
+    @current_month_expenses = @expenses.where(date: @current_month_start..@current_month_end).sum(:amount)
   end
 
 end

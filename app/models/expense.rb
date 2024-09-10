@@ -3,6 +3,7 @@
 # Table name: expenses
 #
 #  id              :uuid             not null, primary key
+#  amount          :float
 #  date            :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -20,4 +21,15 @@
 #  fk_rails_...  (expense_item_id => expense_items.id)
 #
 class Expense < ApplicationRecord
+  has_paper_trail
+
+  # asscociations
+
+  belongs_to :expense_item
+  belongs_to :day
+
+  # validations
+
+  validates :day, presence: true
+  validates :amount, presence: true
 end
