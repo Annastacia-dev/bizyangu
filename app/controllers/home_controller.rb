@@ -30,6 +30,8 @@ class HomeController < ApplicationController
     @current_month_sales = @sales.where(date: @current_month_start..@current_month_end).sum(:selling_price)
     @current_month_stock = @stocks.where(date: @current_month_start..@current_month_end).sum(:cost)
     @current_month_expenses = @expenses.where(date: @current_month_start..@current_month_end).sum(:amount)
+    @current_month_stock_kickback =  @sales.where(date: @current_month_start..@current_month_end).sum(:buying_price)
+    @current_month_profit = @current_month_sales - @current_month_stock_kickback - @current_month_expenses
   end
 
 end

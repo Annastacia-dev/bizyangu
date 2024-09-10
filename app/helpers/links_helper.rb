@@ -5,6 +5,9 @@ module LinksHelper
       { path: root_path, icon: 'fa-solid fa-house', title: 'dashboard' },
       { path: product_categories_path, icon: 'fa-solid fa-layer-group', title: 'categories' },
       { path: products_path, icon: 'fa-solid fa-list', title: 'products' },
+      { path: sales_path, icon: 'fa-solid fa-coins', title: 'sales' },
+      { path: stocks_path, icon: 'fa-solid fa-boxes-stacked', title: 'stocks' },
+      { path: expenses_path, icon: 'fa-solid fa-money-bill-wave', title: 'expenses' },
     ]
   end
 
