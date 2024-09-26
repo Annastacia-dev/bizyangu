@@ -1,7 +1,8 @@
 <% if current_user %>
  <% if current_user.store_admin? %>
   <%= render "store/dashboard" %>
- <% elsif current_user.admin %>
+ <% elsif current_user.admin? %>
+   <%= render 'admin/dashboard' %>
  <% end %>
 <% else %>
   <%= render 'header' %>

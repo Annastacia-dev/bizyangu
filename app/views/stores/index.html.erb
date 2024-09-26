@@ -2,13 +2,13 @@
 
   <%= render 'components/breadcrumb', breadcrumbs: [
     { text: 'home', path: root_path },
-    { text: 'products'}
+    { text: 'stores'}
   ] %>
 
   <div class="flex md:flex-row flex-col justify-between md:items-center gap-3">
-    <h1 class="font-semibold md:text-xl capitalize">Products (<%= @products.size %>)</h1>
-    <%= render 'components/drawer', button_class: 'btn-primary', button_icon: '', button_text: 'new product', id: 'new_product', title: 'new product' do %>
-      <%= render 'form', product: Product.new %>
+    <h1 class="font-semibold md:text-xl capitalize">stores (<%= @stores.size %>)</h1>
+    <%= render 'components/drawer', button_class: 'btn-primary', button_icon: '', button_text: 'new store', id: 'new_product', title: 'new store' do %>
+      <%= render 'form', store: Store.new %>
     <% end %>
   </div>
 
@@ -20,7 +20,7 @@
             #
           </th>
           <th scope="col" class="lg:px-6 px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
-            product
+            store
           </th>
           <th scope="col" class="lg:px-6 px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
             actions
@@ -28,17 +28,17 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-200">
-        <% unless @products.empty? %>
-        <% @products.each_with_index do |product, index| %>
+        <% unless @stores.empty? %>
+        <% @stores.each_with_index do |store, index| %>
           <tr>
             <td class="lg:px-6 px-3 py-4 whitespace-nowrap">
               <%= (index + 1).to_s.rjust(2, '0') %>.
             </td>
             <td class="lg:px-6 px-3 py-4 whitespace-nowrap capitalize hover:underline">
-              <%= link_to product.name, product_url(product)  %>
+              <%= link_to store.name, store_url(store)  %>
             </td>
             <td class="lg:px-6 px-3 py-4 whitespace-nowrap">
-              <%= button_to product, method: :delete, class: "text-red-500", title: "delete" do %>
+              <%= button_to store, method: :delete, class: "text-red-500", title: "delete" do %>
                 <i class="fa-solid fa-trash-can"></i>
               <% end %>
             </td>

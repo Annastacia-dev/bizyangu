@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
       @sales = @store.sales
       @stocks = @store.stocks
       @expenses = @store.expenses
+    elsif current_user.admin?
+      @stores = Store.all
     end
   end
 end
