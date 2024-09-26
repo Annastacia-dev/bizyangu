@@ -14,7 +14,7 @@
 
     <div class="flex flex-col gap-2">
       <%= f.label :product_id, "Select Product" %>
-      <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name, (defined?(sale) ? sale.product_id : @products.first.id)), {}, { class: 'select-field', required: true } %>
+      <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name, (defined?(sale) ? sale.product_id : @products&.first&.id)), {}, { class: 'select-field', required: true } %>
     </div>
 
 
