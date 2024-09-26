@@ -25,7 +25,7 @@
 #  unlock_token           :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  store_id               :uuid             not null
+#  store_id               :uuid
 #
 # Indexes
 #
